@@ -1,0 +1,33 @@
+# Inicio , cambios
+0.01 drae limitado, pero funcionando sin opciones 10-5-20
+ problemas con algunos femeninos, como con sícula; =>$ drae sicula => 
+ o española ?! españolo ; curioso mongola si sale
+  Error: La URL solicitada fue rechazada. Por favor, consulte con su 
+  administrador o póngase en contacto con el soporte técnico de la RAE
+  en soporte@rae.es.
+  Su número de identificación es: 3265939496528569448
+0.02 solucionados problems con género
+ fallo con Árcade ,Árabe nombres propios? en minúscula funciono, 
+ múltiples problemas con mayúscyulas como Española , eSpañol, 
+ Español no hace nada
+0.03 añadido correción a mayúsculas, solución por recursión
+  error con férvida,cérulea se arregla en masculino; ínclita falla tb
+  error próceres, arregla prócer !!! asindética sacrílega
+  drae trébedes / regalona ?!
+0.04 soluciones a anteriores; nuevos errores detectados:
+  ELinks: Error de SSL -> devuan
+  Error en la carga desde el servidor del diccionario.
+  Problema de red o de esta aplicación misma. 
+  Verifique que tiene la última versión o informe de error en:
+  <https://gitlab.com/drae>
+0.06 soluciones, añadido aleatorio, palabra del día
+0.07 añadido anagramas
+0.08 añadido palabras que terminan, empiezan
+ trébede si funciona ?!!
+ por ahora ok pruebas en debian
+0.09 añadido conjugaciones
+0.10 resumiend version
+0.11 versión 1era que se lanza al git
+ se decide en próxima versión -> añadir ayuda en inglés en --help
+   ->posibilidda de mandar más palabras (lista)
+ 
