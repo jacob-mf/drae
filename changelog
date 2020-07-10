@@ -26,8 +26,9 @@
  trébede si funciona ?!!
  por ahora ok pruebas en debian
 0.09 añadido conjugaciones
-0.10 resumiend version
-0.11 versión 1era que se lanza al git
+0.10 resumiendo version, eliminando comentarios, código superfluo
+0.11 versión 1era que se lanza al git, gitlab y libregit
  se decide en próxima versión -> añadir ayuda en inglés en --help
-   ->posibilidda de mandar más palabras (lista)
- 
+   -> posibilidad de mandar más palabras (lista)
+   -> apoyo de herramientas de integracón continua
+   -> uso del locale para texto de ayuda 

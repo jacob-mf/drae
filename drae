@@ -118,11 +118,59 @@ $lema_incl
 ctexto
 rm /tmp/.termina.txt /tmp/.c.txt
 
-# Ayuda #
-else if [[ "$1" ==  "--ayuda"  || "$1" == "--help"  ]]; then
+# Help
+else if [[ "$1" == "--help"  ]]; then
 cat <<-ayuda
-DRAE $version, el Diccionario de la Real Academia Española desde la consola.
+DRAE $version, the Spanish RAE dictionary from the console.
+ * Real Academia Española (Spanish Royal Academy)
+ 
+Usage: drae [OPTION] [WORD]
+ Output the dictionary defnition of the selected WORD (just one)
+ (some options do not require any WORD as param).
 
+Available options in the current version:
+
+   WORD         output the word defnition, if exists,
+                     or give hints of other(s) probably related
+
+   -A           output the an aleatory (random) word definition entry
+   -a WORD      output  anagram(s) of the entered word (other ones
+                     that contain the same letters).
+   -C [LETTERS] output words (lemmas) so contains
+                     the requested letters.
+   -p           output the word ('palabra') of the day by the RAE                 
+   -e [LETTERS] output word(s) that begins ('empezar')
+                     in the introduced letters
+   -t [LETTERS] output word(s) that end ('terminen') 
+                     on the entered letters
+   -c [VERB]    output possible conjugations of the entry verb
+   
+   --ayuda      show same help in Spanish
+   --help       output this help info again
+   --version    output program version
+
+Samples:
+    drae albos       output the RAE dictionary entry of the
+                     word "albo, ba", though plural form was requested
+    drae -e cada     output Spanish word(s) that starts on: "cada"
+          
+This applications is based on old 'drae' one and the project:
+ <https://github.com/sardach/rae-cli> 
+ Both big inspirations of this project, so we want to 
+ honour them their authors here. Thanks a lot! 
+All the definitions are property of the Royal Spanish Academy.
+If you wish you can report aboout errors, suggestions in:
+ <https://github.com/jacob-mf/drae>
+ <https://gitlab.com/caldez/drae>
+Cheers!
+ayuda
+
+# Ayuda #
+else if [[ "$1" ==  "--ayuda" ]]; then
+cat <<-ayuda
+DRAE $version, el Diccionario español de la RAE desde la consola.
+ * Real Academia Española
+ 
 Modo de empleo: drae [OPCIÓN] [PALABRA]
  Muestra la definición del diccionario acerca de la PALABRA (máximo una)
  introducida (algunas opciones no requieren del párametro PALABRA).
@@ -142,7 +190,8 @@ Opciones disponibles en la versión actual:
    -t [LETRAS]  muestra palabras que terminen con las letras dadas
    -c [VERBO]   muestra las posibles conjugaciones del verbo
    
-   --ayuda      muestra esta pantalla
+   --ayuda      muestra ésta misma pantalla
+   --help       muestra la ayuda en idioma inglés
    --version    muestra la versión instalada del programada
 
 Ejemplos:
@@ -161,11 +210,13 @@ Si lo desea puede informar sobre errores y sugerencias en:
 ¡Salud!
 ayuda
 
-else if [ "$1" = "--version" ]
+# version
+else if [ "$1" = "--version" ]; then
 cat <<-version
 DRAE, versión $version
 Copyright (C) 2020 Cáldez Soluciones, Corp.
-Licencia GPLv3+: GPL de GNU versión 3 o posterior <http://gnu.org/licenses/gpl.html>
+Licencia GPLv3+: GPL de GNU versión 3 o posterior
+ <http://gnu.org/licenses/gpl.html>
 
 Esto es software libre, es libre para modificar y redistribuirlo.
 No hay NINGUNA GARANTÍA, a la extensión permitida por la ley.
@@ -178,7 +229,8 @@ cat <<-noarg
 Se requieren argumentos para usar esta aplicación.
 Teclee «drae --ayuda» para mas información.
 También puede introducir ahora una palabra a buscar.
-Si no introduce una palabra (pulsa simplemente la tecla "ENTRAR"), el programa terminará.
+ Si no introduce una palabra (pulsa simplemente la tecla "ENTRAR"),
+ el programa terminará.
 noarg
 read -p "Introduce palabra a buscar: " pal
  if [[ $pal = "" ]]; then # salida del programa
@@ -195,7 +247,7 @@ elinks -dump 'https://dle.rae.es/'${in}'?m='${fu}'' > /tmp/.anagrama.txt
 sed '/Todos los derechos reservados/q0' /tmp/.anagrama.txt > /tmp/.anag.txt
 anagrama=`sed '1,28d' /tmp/.anag.txt`
 more <<-anag
-Anagramas de la palabra "$in" en el diccionario RAE:
+Anagramas de la palabra "$in" en el diccionario de la RAE:
 $anagrama
 anag
 rm /tmp/.anagrama.txt /tmp/.anag.txt
@@ -241,6 +293,6 @@ more /tmp/.pb.txt
 test_error_url
 rm /tmp/.pa.txt /tmp/.pc.txt /tmp/.pb.txt
 
-fi fi fi fi fi fi fi fi fi fi fi
+fi fi fi fi fi fi fi fi fi fi fi fi fi
 
 exit 0
