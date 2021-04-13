@@ -80,7 +80,7 @@ conjugacion=`sed '1,27d' /tmp/.conj.txt`
 es_verbo? "$conjugacion" 
 sed '1,27d' /tmp/.conj.txt > /tmp/.conjugacion.txt
 conjugacion=`grep 'Conjugación de .*' /tmp/.conjugacion.txt -A 100`
-more <<-conjtexto
+less <<-conjtexto
 $conjugacion
 conjtexto
 rm /tmp/.conj.txt /tmp/.conjugacion.txt
@@ -91,7 +91,7 @@ in="$2?m=31"
 elinks -dump 'http://dle.rae.es/'${in}'' > /tmp/.emp.txt
 sed '/Todos los derechos reservados/q0' /tmp/.emp.txt > /tmp/.e.txt
 lema_emp=`sed '1,27d' /tmp/.e.txt`
-more <<-etexto
+less <<-etexto
 $lema_emp
 etexto
 rm /tmp/.emp.txt /tmp/.e.txt
@@ -102,7 +102,7 @@ in="$2?m=32"
 elinks -dump 'http://dle.rae.es/'${in}'' > /tmp/.ult.txt
 sed '/Todos los derechos reservados/q0' /tmp/.ult.txt > /tmp/.t.txt
 lema_term=`sed '1,27d' /tmp/.t.txt`
-more <<-ttexto
+less <<-ttexto
 $lema_term
 ttexto
 rm /tmp/.ult.txt /tmp/.t.txt
@@ -113,7 +113,7 @@ in="$2?m=33"
 elinks -dump 'http://dle.rae.es/'${in}'' > /tmp/.termina.txt
 sed '/Todos los derechos reservados/q0' /tmp/.termina.txt > /tmp/.c.txt
 lema_incl=`sed '1,27d' /tmp/.c.txt`
-more <<-ctexto
+less <<-ctexto
 $lema_incl
 ctexto
 rm /tmp/.termina.txt /tmp/.c.txt
@@ -246,7 +246,7 @@ fu="anagram"
 elinks -dump 'https://dle.rae.es/'${in}'?m='${fu}'' > /tmp/.anagrama.txt
 sed '/Todos los derechos reservados/q0' /tmp/.anagrama.txt > /tmp/.anag.txt
 anagrama=`sed '1,28d' /tmp/.anag.txt`
-more <<-anag
+less <<-anag
 Anagramas de la palabra "$in" en el diccionario de la RAE:
 $anagrama
 anag
@@ -258,7 +258,7 @@ elinks -dump https://dle.rae.es/?m=random > /tmp/.random.txt
 sed '/Todos los derechos reservados/q0' /tmp/.random.txt > /tmp/.pa.txt
 azar=`sed '1,27d' /tmp/.pa.txt`
 rm /tmp/.random.txt /tmp/.pa.txt
-more <<-pa
+less <<-pa
 Palabra aleatoria del diccionario RAE:$azar
 pa
 
@@ -268,13 +268,13 @@ elinks -no-references -no-numbering -dump https://dle.rae.es/?m=wotd > /tmp/.wot
 sed '/Todos los derechos reservados/q0' /tmp/.wotd.txt > /tmp/.pa.txt
 wotd=`sed '1,27d' /tmp/.pa.txt`
 rm /tmp/.wotd.txt /tmp/.pa.txt
-more <<-pdd
+less <<-pdd
 Palabra del dia:$wotd
 pdd
 
 # Opción no contemplada
 else if [[ "$1" == -* ]]; then
-more <<-opcion-no-valida
+less <<-opcion-no-valida
 Lo siento. La opción $1 no está disponible.
 Consulte «drae --ayuda» para consultar las opciones posibles.
 Salud
@@ -289,7 +289,7 @@ elinks -no-references -no-numbering -dump 'http://dle.rae.es/'${fu}'='${in} > /t
 test_carga
 sed '/Todos los derechos reservados/q0' /tmp/.pc.txt > /tmp/.pa.txt
 sed '1,27d' /tmp/.pa.txt > /tmp/.pb.txt
-more /tmp/.pb.txt 
+less /tmp/.pb.txt 
 test_error_url
 rm /tmp/.pa.txt /tmp/.pc.txt /tmp/.pb.txt
 
